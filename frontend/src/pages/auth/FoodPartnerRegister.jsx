@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const FoodPartnerRegister = () => {
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const businessName = e.target.businessName.value;
@@ -17,7 +17,7 @@ const FoodPartnerRegister = () => {
     const password = e.target.password.value;
     const address = e.target.address.value;
     try {
-      axios.post(
+      const response=await axios.post(
         "http://localhost:3000/api/auth/food-partner/register",
         {
           name: businessName,
