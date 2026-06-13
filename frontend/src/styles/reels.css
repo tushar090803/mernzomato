@@ -150,3 +150,11 @@
 .empty-state{
   position: absolute; inset: 0; display: grid; place-items: center; color: #fff;
 }
+.reel-btn {
+  z-index: 9999;
+}
+.reel-content {
+  position: absolute;
+  bottom: 100px; /* increase/decrease as needed */
+  left: 16px;
+}
