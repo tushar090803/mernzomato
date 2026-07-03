@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/auth-shared.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import api from './api';
+import api from '../../api.js';
 
 const FoodPartnerLogin = () => {
   const navigate = useNavigate();

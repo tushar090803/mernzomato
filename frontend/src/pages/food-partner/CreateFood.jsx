@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import "../../styles/create-food.css";
-import api from './api';
+import api from '../../api.js';
 
 const CreateFood = () => {
   const [name, setName] = useState("");

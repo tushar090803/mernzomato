@@ -3,7 +3,7 @@ import axios from "axios";
 import "../../styles/reels.css";
 import ReelFeed from "../../components/ReelFeed";
 import { useNavigate } from 'react-router-dom';
-import api from './api';
+import api from '../../api.js';
 const Home = () => {
   const [videos, setVideos] = useState([]);
 
