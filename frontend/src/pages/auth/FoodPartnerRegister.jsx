@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../../styles/auth-shared.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import api from '../../api.js';
 
 const FoodPartnerRegister = () => {
   const navigate = useNavigate();
@@ -18,8 +17,8 @@ const FoodPartnerRegister = () => {
     const password = e.target.password.value;
     const address = e.target.address.value;
     try {
-      const response=await api.post(
-        "/api/auth/food-partner/register",
+      const response=await axios.post(
+        "https://mernzomato.onrender.com/api/auth/food-partner/register",
         {
           name: businessName,
           contactName,
@@ -27,7 +26,8 @@ const FoodPartnerRegister = () => {
           email,
           password,
           address,
-        }
+        },
+        { withCredentials: true },
       );
       navigate("/create-food");
     } catch (error) {

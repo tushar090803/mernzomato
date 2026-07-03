@@ -3,7 +3,6 @@ import axios from "axios";
 import "../../styles/reels.css";
 import ReelFeed from "../../components/ReelFeed";
 import { useNavigate } from 'react-router-dom';
-import api from '../../api.js';
 const Home = () => {
   const [videos, setVideos] = useState([]);
 
@@ -13,8 +12,8 @@ const Home = () => {
   // Autoplay behavior is handled inside ReelFeed
     const navigate = useNavigate();
   useEffect(() => {
-    api
-      .get("/api/food")
+    axios
+      .get("https://mernzomato.onrender.com/api/food", { withCredentials: true })
       .then((response) => {
         console.log(response.data);
 
@@ -40,9 +39,10 @@ const Home = () => {
   // Using local refs within ReelFeed; keeping map here for dependency parity if needed
 
   async function likeVideo(item) {
-    const response = await api.post(
-      "/api/food/like",
-      { foodId: item._id }
+    const response = await axios.post(
+      "http://localhost:3000/api/food/like",
+      { foodId: item._id },
+      { withCredentials: true },
     );
 
     if (response.data.like) {
@@ -63,9 +63,10 @@ const Home = () => {
   }
 
   async function saveVideo(item) {
-    const response = await api.post(
-      "/api/food/save",
-      { foodId: item._id }
+    const response = await axios.post(
+      "http://localhost:3000/api/food/save",
+      { foodId: item._id },
+      { withCredentials: true },
     );
 
     if (response.data.save) {

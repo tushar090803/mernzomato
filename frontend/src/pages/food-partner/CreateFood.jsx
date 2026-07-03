@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import "../../styles/create-food.css";
-import api from '../../api.js';
 
 const CreateFood = () => {
   const [name, setName] = useState("");
@@ -81,9 +80,12 @@ const CreateFood = () => {
       formData.append("description", description);
       formData.append("mama", videoFile);
 
-      const response = await api.post(
-        "/api/food",
-        formData
+      const response = await axios.post(
+        "https://mernzomato.onrender.com/api/food",
+        formData,
+        {
+          withCredentials: true,
+        },
       );
 
       console.log(response.data);

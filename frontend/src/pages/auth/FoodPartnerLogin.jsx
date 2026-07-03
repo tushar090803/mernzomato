@@ -2,7 +2,6 @@ import React from "react";
 import "../../styles/auth-shared.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import api from '../../api.js';
 
 const FoodPartnerLogin = () => {
   const navigate = useNavigate();
@@ -14,12 +13,13 @@ const FoodPartnerLogin = () => {
     const password = e.target.password.value;
 
     try {
-      const response = await api.post(
-        "/api/auth/food-partner/login",
+      const response = await axios.post(
+        "https://mernzomato.onrender.com/api/auth/food-partner/login",
         {
           email,
           password,
-        }
+        },
+        { withCredentials: true },
       );
 
       console.log(response.data);

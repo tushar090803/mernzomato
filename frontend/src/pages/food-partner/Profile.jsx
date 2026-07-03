@@ -2,15 +2,14 @@ import React, { useState, useEffect, use } from 'react'
 import '../../styles/profile.css'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import api from '../../api.js';
 
 const Profile = () => {
     const { id } = useParams()
     const [ profile, setProfile ] = useState(null)
     const [ videos, setVideos ] = useState([])
 
-    useEffect(async() => {
-        await api.get(`/api/food-partner/${id}`)
+    useEffect(() => {
+        axios.get(`https://mernzomato.onrender.com/api/food-partner/${id}`, { withCredentials: true })
             .then(response => {
                 setProfile(response.data.foodPartner)
                 setVideos(response.data.foodPartner.foodItems)
