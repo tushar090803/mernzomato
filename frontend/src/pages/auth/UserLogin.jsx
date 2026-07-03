@@ -14,7 +14,7 @@ const UserLogin = () => {
     try {
 
       const response = await axios.post(
-        "https://mernzomato.onrender.com/api/auth/user/login",
+        "http://localhost:3000/api/auth/user/login",
         {
           email,
           password,
@@ -23,7 +23,6 @@ const UserLogin = () => {
       );
 
       console.log(response.data);
-      const res=await axios.get("https://mernzomato.onrender.com/api/found")
       navigate("/");
     } catch (err) {
       alert("User doesn't exist")

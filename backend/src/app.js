@@ -7,18 +7,10 @@ const foodPartnerRoutes = require('./routes/food-partner.routes');
 const cors = require('cors');
 
 const app = express();
-
 app.use(cors({
-    // Dynamically allows ALL origins by echoing the incoming request's origin back
-    origin: function (origin, callback) {
-        // If there's no origin (like server-to-server or Postman requests), allow it
-        if (!origin) return callback(null, true);
-        
-        // This accepts every incoming URL dynamically
-        callback(null, true);
-    },
-    credentials: true // Keeps your cookie/JWT system working perfectly
-}));
+    origin:true,
+    credentials:true
+}))
 
 app.use(cookieParser());
 app.use(express.json());
@@ -30,16 +22,5 @@ app.get("/", (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/food', foodRoutes);
 app.use('/api/food-partner', foodPartnerRoutes);
-
-app.get('/api/found',(req,res)=>{
-    if(!req.cookies.token){
-        return res.status(401).json({
-            message:"please login first"
-        })
-    }
-    return res.status(201).json({
-        "token":req.cookies.token
-    })
-})
 
 module.exports = app;

@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../styles/reels.css";
 import ReelFeed from "../../components/ReelFeed";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 const Home = () => {
   const [videos, setVideos] = useState([]);
 
-  useEffect(() => {}, []); // Autoplay behavior is handled inside ReelFeed
-  const navigate = useNavigate();
+  useEffect(()=>{
+    
+  },[])
+  // Autoplay behavior is handled inside ReelFeed
+    const navigate = useNavigate();
   useEffect(() => {
-    async function name(){
-      await axios
-      .get("https://mernzomato.onrender.com/api/food", {
-        withCredentials: true,
-      })
+    axios
+      .get("http://localhost:3000/api/food", { withCredentials: true })
       .then((response) => {
         console.log(response.data);
 
@@ -22,25 +22,25 @@ const Home = () => {
       .catch(() => {
         /* noop: optionally handle error */
       });
+  }, []);
+
+  useEffect(() => {
+    const token = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("token="))
+      ?.split("=")[1];
+
+    console.log(token);
+    if(!token){
+        navigate("/register")
     }
-    name()
-  },[]);
+  });
 
-  // useEffect(() => {
-  //   const token = document.cookie
-  //     .split("; ")
-  //     .find((row) => row.startsWith("token="))
-  //     ?.split("=")[1];
-
-  //   console.log(token);
-  //   if (!token) {
-  //     navigate("/register");
-  //   }
-  // }, []); // Using local refs within ReelFeed; keeping map here for dependency parity if needed
+  // Using local refs within ReelFeed; keeping map here for dependency parity if needed
 
   async function likeVideo(item) {
     const response = await axios.post(
-      "https://mernzomato.onrender.com/api/food/like",
+      "http://localhost:3000/api/food/like",
       { foodId: item._id },
       { withCredentials: true },
     );
@@ -64,7 +64,7 @@ const Home = () => {
 
   async function saveVideo(item) {
     const response = await axios.post(
-      "https://mernzomato.onrender.com/api/food/save",
+      "http://localhost:3000/api/food/save",
       { foodId: item._id },
       { withCredentials: true },
     );

@@ -14,7 +14,7 @@ const FoodPartnerLogin = () => {
 
     try {
       const response = await axios.post(
-        "https://mernzomato.onrender.com/api/auth/food-partner/login",
+        "http://localhost:3000/api/auth/food-partner/login",
         {
           email,
           password,
@@ -23,7 +23,7 @@ const FoodPartnerLogin = () => {
       );
 
       console.log(response.data);
-      const res=await axios.get("https://mernzomato.onrender.com/api/found")
+
       navigate("/create-food");
     } catch (error) {
       alert("Partner doesn't exist");

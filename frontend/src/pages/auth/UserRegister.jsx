@@ -17,7 +17,7 @@ const UserRegister = () => {
 
     try {
       const response = await axios.post(
-        "https://mernzomato.onrender.com/api/auth/user/register",
+        "http://localhost:3000/api/auth/user/register",
         {
           fullName: firstName + " " + lastName,
           email,
@@ -27,7 +27,7 @@ const UserRegister = () => {
           withCredentials: true,
         },
       );
-      const res=await axios.get("https://mernzomato.onrender.com/api/found")
+
       navigate("/");
     } catch (error) {
       alert("User already exist");

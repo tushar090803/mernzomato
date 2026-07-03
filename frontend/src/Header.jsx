@@ -9,7 +9,7 @@ function Header() {
 
     try {
         await axios.get(
-            "https://mernzomato.onrender.com/api/auth/logout",
+            "http://localhost:3000/api/auth/logout",
             { withCredentials: true }
         );
 
