@@ -34,7 +34,7 @@ const Home = () => {
     if(!token){
         navigate("/register")
     }
-  });
+  },[]);
 
   // Using local refs within ReelFeed; keeping map here for dependency parity if needed
 
