@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-
+import api from './api';
 function Header() {
     const navigate=useNavigate()
     
@@ -8,10 +8,7 @@ function Header() {
     e.preventDefault();
 
     try {
-        await axios.get(
-            "http://localhost:3000/api/auth/logout",
-            { withCredentials: true }
-        );
+        await api.get("/api/auth/logout")
 
         navigate("/register");
     } catch (error) {
