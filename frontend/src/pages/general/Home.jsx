@@ -13,7 +13,7 @@ const Home = () => {
     const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("https://mernzomato.onrender.com/api/food", { withCredentials: true })
+      .get("http://localhost:3000/api/food", { withCredentials: true })
       .then((response) => {
         console.log(response.data);
 
@@ -34,7 +34,7 @@ const Home = () => {
     if(!token){
         navigate("/register")
     }
-  },[]);
+  });
 
   // Using local refs within ReelFeed; keeping map here for dependency parity if needed
 

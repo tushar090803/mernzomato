@@ -8,7 +8,10 @@ function Header() {
     e.preventDefault();
 
     try {
-        await axios.get("https://mernzomato.onrender.com/api/auth/logout")
+        await axios.get(
+            "http://localhost:3000/api/auth/logout",
+            { withCredentials: true }
+        );
 
         navigate("/register");
     } catch (error) {
