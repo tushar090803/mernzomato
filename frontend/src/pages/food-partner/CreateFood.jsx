@@ -81,7 +81,7 @@ const CreateFood = () => {
       formData.append("mama", videoFile);
 
       const response = await axios.post(
-        "http://localhost:3000/api/food",
+        "https://mernzomato.onrender.com/api/food",
         formData,
         {
           withCredentials: true,

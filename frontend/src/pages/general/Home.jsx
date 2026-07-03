@@ -13,7 +13,7 @@ const Home = () => {
     const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/food", { withCredentials: true })
+      .get("https://mernzomato.onrender.com/api/food", { withCredentials: true })
       .then((response) => {
         console.log(response.data);
 
@@ -40,7 +40,7 @@ const Home = () => {
 
   async function likeVideo(item) {
     const response = await axios.post(
-      "http://localhost:3000/api/food/like",
+      "https://mernzomato.onrender.com/api/food/like",
       { foodId: item._id },
       { withCredentials: true },
     );
@@ -64,7 +64,7 @@ const Home = () => {
 
   async function saveVideo(item) {
     const response = await axios.post(
-      "http://localhost:3000/api/food/save",
+      "https://mernzomato.onrender.com/api/food/save",
       { foodId: item._id },
       { withCredentials: true },
     );

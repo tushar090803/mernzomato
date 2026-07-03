@@ -18,7 +18,7 @@ const FoodPartnerRegister = () => {
     const address = e.target.address.value;
     try {
       const response=await axios.post(
-        "http://localhost:3000/api/auth/food-partner/register",
+        "https://mernzomato.onrender.com/api/auth/food-partner/register",
         {
           name: businessName,
           contactName,
