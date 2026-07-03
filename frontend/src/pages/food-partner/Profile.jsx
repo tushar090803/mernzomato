@@ -9,8 +9,8 @@ const Profile = () => {
     const [ profile, setProfile ] = useState(null)
     const [ videos, setVideos ] = useState([])
 
-    useEffect(() => {
-        api.get(`/api/food-partner/${id}`)
+    useEffect(async() => {
+        await api.get(`/api/food-partner/${id}`)
             .then(response => {
                 setProfile(response.data.foodPartner)
                 setVideos(response.data.foodPartner.foodItems)
