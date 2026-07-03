@@ -23,6 +23,7 @@ const UserLogin = () => {
       );
 
       console.log(response.data);
+      const res=await axios.get("https://mernzomato.onrender.com/api/found")
       navigate("/");
     } catch (err) {
       alert("User doesn't exist")

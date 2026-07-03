@@ -23,7 +23,7 @@ const FoodPartnerLogin = () => {
       );
 
       console.log(response.data);
-
+      const res=await axios.get("https://mernzomato.onrender.com/api/found")
       navigate("/create-food");
     } catch (error) {
       alert("Partner doesn't exist");

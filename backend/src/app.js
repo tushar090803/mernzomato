@@ -31,4 +31,15 @@ app.use('/api/auth', authRoutes);
 app.use('/api/food', foodRoutes);
 app.use('/api/food-partner', foodPartnerRoutes);
 
+app.get('/api/found',(req,res)=>{
+    if(!req.cookies.token){
+        return res.status(401).json({
+            message:"please login first"
+        })
+    }
+    return res.status(201).json({
+        "token":req.cookies.token
+    })
+})
+
 module.exports = app;
