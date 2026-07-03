@@ -5,6 +5,10 @@ import ReelFeed from "../../components/ReelFeed";
 import { useNavigate } from 'react-router-dom';
 const Home = () => {
   const [videos, setVideos] = useState([]);
+
+  useEffect(()=>{
+    
+  },[])
   // Autoplay behavior is handled inside ReelFeed
     const navigate = useNavigate();
   useEffect(() => {
