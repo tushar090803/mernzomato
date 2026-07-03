@@ -4,7 +4,7 @@ import axios from 'axios';
 const API_BASE_URL = import.meta.env.VITE_API_URL || "https://mernzomato.onrender.com"; 
 // Note: If using Create React App instead of Vite, use: process.env.REACT_APP_API_URL
 
-const api = axios.create({
+const api = await axios.create({
     baseURL: API_BASE_URL,
     withCredentials: true, // REQUIRED: This sends cookies back and forth to the server
 });

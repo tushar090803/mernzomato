@@ -12,8 +12,8 @@ const Home = () => {
   },[])
   // Autoplay behavior is handled inside ReelFeed
     const navigate = useNavigate();
-  useEffect(async() => {
-    await api
+  useEffect(() => {
+    api
       .get("/api/food")
       .then((response) => {
         console.log(response.data);

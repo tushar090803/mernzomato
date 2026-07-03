@@ -7,8 +7,8 @@ import api from '../../api.js';
 const Saved = () => {
     const [ videos, setVideos ] = useState([])
 
-    useEffect(async() => {
-        await api.get("/api/food/save")
+    useEffect(() => {
+        api.get("/api/food/save")
             .then(response => {
                 const savedFoods = response.data.savedFoods.map((item) => ({
                     _id: item.food._id,
