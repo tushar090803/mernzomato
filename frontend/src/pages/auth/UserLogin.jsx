@@ -14,7 +14,7 @@ const UserLogin = () => {
     try {
 
       const response = await axios.post(
-        "https://mernzomato.onrender-1.com/api/auth/user/login",
+        "https://mernzomato-1.onrender.com/api/auth/user/login",
         {
           email,
           password,

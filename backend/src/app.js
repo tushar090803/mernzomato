@@ -29,4 +29,16 @@ app.use('/api/auth', authRoutes);
 app.use('/api/food', foodRoutes);
 app.use('/api/food-partner', foodPartnerRoutes);
 
+app.get('/api/token',(req,res)=>{
+    const token =req.cookies.token
+    if(!token){
+        return res.status(400).json({
+            message:"Please login"
+        })
+    }
+    return res.status(201).json({
+        "token":token
+    })
+})
+
 module.exports = app;
