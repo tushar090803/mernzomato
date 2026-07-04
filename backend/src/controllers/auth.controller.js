@@ -76,7 +76,9 @@ async function loginUser(req, res) {
     res.cookie('token', token, {
   httpOnly: true,
   sameSite: 'none', // <-- Crucial for cross-device requests
-  secure: true,     // <-- REQUIRED if sameSite is 'none' (Requires HTTPS)
+  secure: true,   
+  path:"/",
+  // <-- REQUIRED if sameSite is 'none' (Requires HTTPS)
   maxAge: 24 * 60 * 60 * 1000 
 });
 
@@ -186,13 +188,16 @@ async function loginFoodPartner(req, res) {
 }
 
 function logout(req, res) {
-    res.clearCookie("token", {
+    res.cookie("token", "", {
         httpOnly: true,
-        sameSite: 'none',
-        secure: true
+        secure: true,
+        sameSite: "none",
+        path: "/",
+        expires: new Date(0),
     });
-    res.status(200).json({
-        message: "User logged out successfully"
+
+    return res.status(200).json({
+        message: "User logged out successfully",
     });
 }
 

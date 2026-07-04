@@ -9,9 +9,12 @@ function Header() {
     e.preventDefault();
 
     try {
+        const response=
         await api.get(
             "/api/auth/logout"
+
         );
+        console.log(response);
 
         navigate("/register");
     } catch (error) {
