@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import api from "./api.js"
 
 function Header() {
     const navigate=useNavigate()
@@ -8,9 +9,8 @@ function Header() {
     e.preventDefault();
 
     try {
-        await axios.get(
-            "https://mernzomato-1.onrender.com/api/auth/logout",
-            { withCredentials: true }
+        await api.get(
+            "/api/auth/logout"
         );
 
         navigate("/register");

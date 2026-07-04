@@ -3,6 +3,7 @@ import axios from "axios";
 import "../../styles/reels.css";
 import ReelFeed from "../../components/ReelFeed";
 import { useNavigate } from "react-router-dom";
+import api from "../../api.js"
 const Home = () => {
   const [videos, setVideos] = useState([]);
 
@@ -11,28 +12,27 @@ const Home = () => {
   const navigate = useNavigate();
   useEffect(() => {
     async function name() {
-      await axios
-      .get("https://mernzomato-1.onrender.com/api/food", {
-        withCredentials: true,
-      })
+      await api
+      .get("/api/food")
       .then((response) => {
         console.log(response.data);
 
         setVideos(response.data.foodItems);
       })
       .catch(() => {
+        console.log("error")
         /* noop: optionally handle error */
       });  
     }
+    name()
     
   }, []);
 
   useEffect(() => {
     async function name() {
       try {
-        const response = await axios.get(
-        "https://mernzomato-1.onrender.com/api/token",
-        { withCredentials: true },
+        const response = await api.get(
+        "/api/token"
       );
       console.log(response);
       // if (response.token) {
@@ -47,15 +47,14 @@ const Home = () => {
       }
     }
     name();
-  },[]);
+  });
 
   // Using local refs within ReelFeed; keeping map here for dependency parity if needed
 
   async function likeVideo(item) {
-    const response = await axios.post(
-      "http://localhost:3000/api/food/like",
-      { foodId: item._id },
-      { withCredentials: true },
+    const response = await api.post(
+      "https://mernzomato-1.onrender.com/api/food/like",
+      { foodId: item._id }
     );
 
     if (response.data.like) {
@@ -76,10 +75,9 @@ const Home = () => {
   }
 
   async function saveVideo(item) {
-    const response = await axios.post(
-      "http://localhost:3000/api/food/save",
-      { foodId: item._id },
-      { withCredentials: true },
+    const response = await api.post(
+      "/api/food/save",
+      { foodId: item._id }
     );
 
     if (response.data.save) {

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../../styles/auth-shared.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../../api.js"
 
 const UserRegister = () => {
   const navigate = useNavigate();
@@ -16,16 +17,13 @@ const UserRegister = () => {
     const password = e.target.password.value;
 
     try {
-      const response = await axios.post(
-        "https://mernzomato-1.onrender.com/api/auth/user/register",
+      const response = await api.post(
+        "/api/auth/user/register",
         {
           fullName: firstName + " " + lastName,
           email,
           password,
-        },
-        {
-          withCredentials: true,
-        },
+        }
       );
 
       navigate("/");

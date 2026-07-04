@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import '../../styles/reels.css'
 import axios from 'axios'
 import ReelFeed from '../../components/ReelFeed'
+import api from "../../api.js"
 
 const Saved = () => {
     const [ videos, setVideos ] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/food/save", { withCredentials: true })
+        async function name() {
+            api.get("/api/food/save")
             .then(response => {
                 const savedFoods = response.data.savedFoods.map((item) => ({
                     _id: item.food._id,
@@ -20,6 +22,8 @@ const Saved = () => {
                 }))
                 setVideos(savedFoods)
             })
+        }
+        name()
     }, [])
 
     const removeSaved = async (item) => {
