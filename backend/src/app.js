@@ -7,10 +7,15 @@ const foodPartnerRoutes = require('./routes/food-partner.routes');
 const cors = require('cors');
 
 const app = express();
-app.use(cors({
-    origin:true,
-    credentials:true
-}))
+
+
+const corsOptions = {
+  origin: 'http://your-frontend-ip-or-domain:port', // Or use '*' temporary for testing only
+  methods: 'GET,POST,PUT,DELETE,OPTIONS',
+  allowedHeaders: 'Content-Type,Authorization' // <-- This tells the browser the token header is allowed
+};
+
+app.use(cors(corsOptions));
 
 app.use(cookieParser());
 app.use(express.json());
