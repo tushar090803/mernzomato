@@ -18,7 +18,7 @@ const FoodPartnerRegister = () => {
     const password = e.target.password.value;
     const address = e.target.address.value;
     try {
-      const response=await axios.post(
+      const response=await api.post(
         "/api/auth/food-partner/register",
         {
           name: businessName,
