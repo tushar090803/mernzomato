@@ -10,7 +10,7 @@ const app = express();
 
 
 const corsOptions = {
-  origin: 'http://your-frontend-ip-or-domain:port', // Or use '*' temporary for testing only
+  origin: '*', // Or use '*' temporary for testing only
   methods: 'GET,POST,PUT,DELETE,OPTIONS',
   allowedHeaders: 'Content-Type,Authorization' // <-- This tells the browser the token header is allowed
 };
