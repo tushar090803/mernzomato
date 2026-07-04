@@ -10,7 +10,7 @@ const app = express();
 
 
 const corsOptions = {
-  origin: 'http://localhost:5173', 
+  origin: 'https://mernzomato-1.onrender.com', 
   credentials: true,// Or use '*' temporary for testing only
   methods: 'GET,POST,PUT,DELETE,OPTIONS',
   allowedHeaders: 'Content-Type,Authorization' // <-- This tells the browser the token header is allowed
