@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../styles/reels.css";
 import ReelFeed from "../../components/ReelFeed";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [videos, setVideos] = useState([]);
 
-  useEffect(()=>{
-    
-  },[])
+  useEffect(() => {}, []);
   // Autoplay behavior is handled inside ReelFeed
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/food", { withCredentials: true })
+    async function name() {
+      await axios
+      .get("https://mernzomato-1.onrender.com/api/food", {
+        withCredentials: true,
+      })
       .then((response) => {
         console.log(response.data);
 
@@ -21,20 +22,32 @@ const Home = () => {
       })
       .catch(() => {
         /* noop: optionally handle error */
-      });
+      });  
+    }
+    
   }, []);
 
   useEffect(() => {
-    const token = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("token="))
-      ?.split("=")[1];
+    async function name() {
+      try {
+        const response = await axios.get(
+        "https://mernzomato-1.onrender.com/api/token",
+        { withCredentials: true },
+      );
+      console.log(response);
+      // if (response.token) {
+      //   response.token
+      //     .split("; ")
+      //     .find((row) => row.startsWith("token="))
+      //     ?.split("=")[1];
 
-    console.log(token);
-    if(!token){
-        navigate("/register")
+      // }
+      } catch (error) {
+        navigate('/register')
+      }
     }
-  });
+    name();
+  },[]);
 
   // Using local refs within ReelFeed; keeping map here for dependency parity if needed
 
